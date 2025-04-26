@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeNet</title>
+    <!-- Tailwind CSS CDN para simular Shadcn/UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para complementar Tailwind */
+        .screenshot {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .screenshot:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .download-btn {
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* Scrollbar personalizada para a galeria */
+        .screenshot-gallery::-webkit-scrollbar {
+            height: 8px;
+        }
+        .screenshot-gallery::-webkit-scrollbar-thumb {
+            background: #60a5fa;
+            border-radius: 4px;
+        }
+        .html {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-950 to-blue-900 text-white min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-5xl w-full mx-auto space-y-12">
+        <!-- Header -->
+        <header class="text-center space-y-6">
+            <img src="https://i.ibb.co/Fb2XM1YP/login.png" alt="Logo do App" class="mx-auto rounded-1xl shadow-lg" width="192" height="192">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight">PrimeNet</h1>
+
+            <!-- Details -->
+        <section class="space-y-6 html">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl border border-white/20">
+                    <ul class="space-y-2 text-blue-100 text-center">
+                        <li><strong>Versão:</strong> 4.4.6</li>
+                    </ul>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl border border-white/20">
+                    <ul class="space-y-2 text-blue-100 text-center">
+                        <li><strong>Atualizado:</strong> 26/04/2025</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+            <a href="../app/primenet.apk" class="download-btn inline-block bg-green-500 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-md hover:bg-green-600">
+                Baixar APK
+            </a>
+            <br>
+            <p class="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto">
+                Após clicar em baixar, verifique as notificações e clique para instalar o apk.
+            </p>
+        </header>
+    </div>
+
+    <!-- Script para adicionar um toque interativo -->
+    <script>
+        document.querySelectorAll('.screenshot').forEach(img => {
+            img.addEventListener('click', () => {
+                img.classList.toggle('scale-110');
+            });
+        });
+    </script>
+    
+    <script>
+    window.onload = () => {
+        const appData = JSON.parse(localStorage.getItem('appData')) || {};
+        document.querySelector('h1').textContent = appData.appName || 'Meu App Android';
+        document.querySelector('.tagline').textContent = appData.tagline || 'Transforme sua rotina...';
+        document.querySelectorAll('.info li')[0].innerHTML = `<strong>Versão:</strong> ${appData.version || '1.2.3'}`;
+        
+        });
+    };
+</script>
+</body>
+</html>
